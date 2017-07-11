@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/ivtourPackPic"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".5"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/ten"
+            android:scaleType="fitCenter"
+            android:src="@drawable/music_bg" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/five"
+            android:layout_weight=".5"
+            android:orientation="vertical"
+            android:weightSum="1.2">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".3"
+                android:gravity="left|center"
+                android:text="@string/title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fifteen" />
+
+            <RatingBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_gravity="center"
+                android:layout_weight=".3" />
+
+            <TextView
+                android:id="@+id/tvDuration"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".3"
+                android:gravity="left|center"
+                android:text="@string/duration"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fifteen" />
+
+            <TextView
+                android:id="@+id/tvDetail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".3"
+                android:gravity="left|center"
+                android:text="@string/detail"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fifteen" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ibtnDetailBack"
+        android:layout_width="@dimen/fifty"
+        android:layout_height="@dimen/fifty"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_admin_move_l"/>
+
+</RelativeLayout>

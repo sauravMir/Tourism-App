@@ -1,0 +1,37 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <GridView
+        android:id="@+id/gvCommon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:columnWidth="120dp"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/eighteen"
+        android:listSelector="#00000000"
+        android:numColumns="2"
+        android:paddingBottom="@dimen/eighteen"
+        android:paddingLeft="@dimen/thirty_five"
+        android:paddingRight="@dimen/eighteen"
+        android:paddingTop="@dimen/thirty_five"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/eighteen" />
+
+    <!-- Side navigation drawer UI -->
+    <ExpandableListView
+        android:id="@+id/simpleExpandableListView"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left|start"
+        android:background="#ffeeeeee" />
+
+
+</android.support.v4.widget.DrawerLayout>
