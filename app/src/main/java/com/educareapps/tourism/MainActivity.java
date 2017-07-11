@@ -229,20 +229,20 @@ public class MainActivity extends BaseActivity {
     private void loadData() {
 
         addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
+        addRadioStation(getString(R.string.international_radio), "India", "");
+        addRadioStation(getString(R.string.international_radio), "Pakistan", "");
+        addRadioStation(getString(R.string.international_radio), "USA", "");
 
 
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
+        addRadioStation(getString(R.string.international_radio), "UK", "");
+        addRadioStation(getString(R.string.international_radio), "Spain", "");
+        addRadioStation(getString(R.string.international_radio), "Japan", "");
+        addRadioStation(getString(R.string.international_radio), "Malayshia", "");
 
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
+        addRadioStation(getString(R.string.international_radio), "Egypt", "");
+        addRadioStation(getString(R.string.international_radio), "Indoneshia", "");
+        addRadioStation(getString(R.string.international_radio), "Arab", "");
+        addRadioStation(getString(R.string.international_radio), "Singapur", "");
 
 
        /* addRadioStation(getString(R.string.local_radio), "Radio Plus", "http://s4.voscast.com:8432");
