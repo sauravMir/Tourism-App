@@ -37,7 +37,6 @@ public class TourDetailActivity extends BaseActivity  implements  BaseSliderView
         setContentView(R.layout.activity_tour_detail);
 
         activity = this;
-
         ibtnDetailBack = (ImageButton) findViewById(R.id.ibtnDetailBack);
         mDemoSlider = (SliderLayout)findViewById(R.id.slider);
         tvDetailTitle = (TextView) findViewById(R.id.tvDetailTitle);
