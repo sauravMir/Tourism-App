@@ -107,11 +107,13 @@ public class MainActivity extends BaseActivity  {
                 if (previousSelectedItem != null) {
                     previousSelectedItem.setBackgroundColor(Color.parseColor("#ffeeeeee"));
                 }
+
                 previousSelectedItem = v;
                 v.setBackgroundColor(getResources().getColor(R.color.appColor));
                 if (isDrawerOpen) {
                     isDrawerOpen = true;
                     mDrawerLayout.closeDrawers();
+
 
                 } else {
                     isDrawerOpen = true;
