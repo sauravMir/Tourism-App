@@ -38,12 +38,10 @@ public class MainFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(activity, TourDetailActivity.class);
 
-                //int tourPic = StaticAccess.tourPic[position];
                 String tourTitle = StaticAccess.tourTitle[position];
                 String duration = StaticAccess.duration[position];
                 String detail = StaticAccess.detail[position];
 
-                //intent.putExtra("tourPic", tourPic);
                 intent.putExtra("tourTitle", tourTitle);
                 intent.putExtra("duration", duration);
                 intent.putExtra("detail", detail);
