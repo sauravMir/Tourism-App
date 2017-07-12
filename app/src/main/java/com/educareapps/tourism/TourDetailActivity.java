@@ -18,7 +18,7 @@ import com.educareapps.mylibrary.BaseActivity;
 
 import java.util.HashMap;
 
-public class TourDetailActivity extends BaseActivity  implements  BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+public class TourDetailActivity extends BaseActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     ImageButton ibtnDetailBack;
     TourDetailActivity activity;
     int tourPic;
@@ -35,13 +35,13 @@ public class TourDetailActivity extends BaseActivity  implements  BaseSliderView
 
         activity = this;
         ibtnDetailBack = (ImageButton) findViewById(R.id.ibtnDetailBack);
-        mDemoSlider = (SliderLayout)findViewById(R.id.slider);
+        mDemoSlider = (SliderLayout) findViewById(R.id.slider);
         tvDetailTitle = (TextView) findViewById(R.id.tvDetailTitle);
         tvDetailDuration = (TextView) findViewById(R.id.tvDetailDuration);
         tvDetailExplain = (TextView) findViewById(R.id.tvDetailExplain);
         rtBarDetail = (RatingBar) findViewById(R.id.rtBarDetail);
 
-        HashMap<String,String> url_maps = new HashMap<String, String>();
+        HashMap<String, String> url_maps = new HashMap<String, String>();
         url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
         url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
         url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
@@ -66,8 +66,7 @@ public class TourDetailActivity extends BaseActivity  implements  BaseSliderView
         });
 
 
-
-        for(String name : url_maps.keySet()){
+        for (String name : url_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
             textSliderView
@@ -79,7 +78,7 @@ public class TourDetailActivity extends BaseActivity  implements  BaseSliderView
             //add your extra information
             textSliderView.bundle(new Bundle());
             textSliderView.getBundle()
-                    .putString("extra",name);
+                    .putString("extra", name);
 
             mDemoSlider.addSlider(textSliderView);
         }
@@ -100,7 +99,7 @@ public class TourDetailActivity extends BaseActivity  implements  BaseSliderView
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-        Toast.makeText(this,slider.getBundle().get("extra") + "",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -117,6 +116,7 @@ public class TourDetailActivity extends BaseActivity  implements  BaseSliderView
     public void onPageScrollStateChanged(int state) {
 
     }
+
     @Override
     protected void onStop() {
         // To prevent a memory leak on rotation, make sure to call stopAutoCycle() on the slider before activity or fragment is destroyed

@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black_5"
     tools:context="com.educareapps.fragment.MainFragment">
 
     <GridView
@@ -16,7 +17,7 @@
         android:horizontalSpacing="@dimen/two"
         android:listSelector="#00000000"
         android:numColumns="2"
-        android:padding="@dimen/fifteen"
+        android:clipToPadding="true"
         android:stretchMode="columnWidth"
         android:verticalSpacing="@dimen/two" />
 
