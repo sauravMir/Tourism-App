@@ -106,6 +106,7 @@ public class MainActivity extends BaseActivity  {
 
                 if (previousSelectedItem != null) {
                     previousSelectedItem.setBackgroundColor(Color.parseColor("#ffeeeeee"));
+                    mainFragment.loadCountryWiseTrip(childPosition);
                 }
 
                 previousSelectedItem = v;

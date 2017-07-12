@@ -37,7 +37,7 @@ public class MainFragment extends Fragment {
         return v;
     }
 
-    void loadCountryWiseTrip(int countryId) {
+    public void loadCountryWiseTrip(int countryId) {
 
         switch (countryId) {
             case 0:
@@ -350,7 +350,7 @@ public class MainFragment extends Fragment {
         }
     }
 
-    void loadData(final ArrayList<Tour> tripArr) {
+    public  void loadData(final ArrayList<Tour> tripArr) {
         if (tripArr != null) ;
         adapterTourPackage = new AdapterTourPackage(activity, tripArr);
         gvCommon.setAdapter(adapterTourPackage);
