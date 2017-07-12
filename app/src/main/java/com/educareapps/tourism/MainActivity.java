@@ -24,7 +24,7 @@ import com.educareapps.mylibrary.MarshMallowPermission;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity  {
 
     private ExpandableListView simpleExpandableListView;
     private DrawerLayout mDrawerLayout;
@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity {
 
     //Tourism
     MainFragment mainFragment;
-
+    boolean isDrawerOpen = false;
 
 
     @Override
@@ -80,7 +80,73 @@ public class MainActivity extends BaseActivity {
 
     View previousSelectedItem;
 
+
+
     private void addDrawerItems() {
+
+        loadData();
+
+        //get reference of the ExpandableListView
+        simpleExpandableListView = (ExpandableListView) findViewById(R.id.simpleExpandableListView);
+        // create the adapter by passing your ArrayList data
+        listAdapter = new RadioAdapter(MainActivity.this, rdCategoryLst);
+        // attach the adapter to the expandable list view
+        simpleExpandableListView.setAdapter(listAdapter);
+
+        //expand all the Groups
+        expandAll();
+
+        // setOnChildClickListener listener for child row click
+        simpleExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                //get the group header
+                //RadioCategory headerInfo = rdCategoryLst.get(groupPosition);
+                //get the child info
+
+                if (previousSelectedItem != null) {
+                    previousSelectedItem.setBackgroundColor(Color.parseColor("#ffeeeeee"));
+                }
+                previousSelectedItem = v;
+                v.setBackgroundColor(getResources().getColor(R.color.appColor));
+                if (isDrawerOpen) {
+                    isDrawerOpen = true;
+                    mDrawerLayout.closeDrawers();
+
+                } else {
+                    isDrawerOpen = true;
+                    mDrawerLayout.closeDrawers();
+
+                }
+
+                return false;
+            }
+        });
+        // setOnGroupClickListener listener for group heading click
+        simpleExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+
+                return false;
+            }
+        });
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*private void addDrawerItems() {
 
         loadData();
 
@@ -125,7 +191,11 @@ public class MainActivity extends BaseActivity {
         });
 
 
-    }
+    }*/
+
+
+
+
 
     private void setupDrawer() {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
