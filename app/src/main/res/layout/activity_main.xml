@@ -6,7 +6,9 @@
 
 
 
-    <GridView
+
+
+   <!-- <GridView
         android:id="@+id/gvCommon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,7 +22,15 @@
         android:numColumns="2"
         android:padding="@dimen/fifteen"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="@dimen/two" />
+        android:verticalSpacing="@dimen/two" />-->
+
+
+    <FrameLayout
+        android:id="@+id/flSisMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
     <!-- Side navigation drawer UI -->
     <ExpandableListView

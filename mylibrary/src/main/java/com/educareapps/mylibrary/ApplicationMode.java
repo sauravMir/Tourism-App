@@ -9,5 +9,5 @@ package com.educareapps.mylibrary;
 
 public class ApplicationMode {
 
-    public static boolean devMode = false;
+    public static boolean devMode = true;
 }

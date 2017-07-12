@@ -1,6 +1,8 @@
 package com.educareapps.tourism;
 
-import android.content.Intent;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.media.AudioFormat;
@@ -12,11 +14,10 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
-import android.widget.GridView;
 
+import com.educareapps.fragment.MainFragment;
 import com.educareapps.mylibrary.BaseActivity;
 import com.educareapps.mylibrary.MarshMallowPermission;
 
@@ -34,6 +35,7 @@ public class MainActivity extends BaseActivity {
     private ArrayList<RadioCategory> rdCategoryLst = new ArrayList<RadioCategory>();
     private RadioAdapter listAdapter;
     MainActivity activity;
+    private static final String FRAGMENT_FLAG = "fragment_SIS_FLAG";
 
     private static final int RECORDER_SAMPLERATE = 8000;
     private static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
@@ -42,8 +44,7 @@ public class MainActivity extends BaseActivity {
 
 
     //Tourism
-    GridView gvCommon;
-    AdapterTourPackage adapterTourPackage;
+    MainFragment mainFragment;
 
 
 
@@ -59,6 +60,8 @@ public class MainActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        mainFragment = new MainFragment();
+
         marshMallowPermission = new MarshMallowPermission(activity);
 
         if (!marshMallowPermission.checkPermissionForExternalStorage() || !marshMallowPermission.checkPermissionForRecord() || !marshMallowPermission.checkPermissionForCamera()) {
@@ -71,29 +74,7 @@ public class MainActivity extends BaseActivity {
         RadioStation radioStation = (RadioStation) listAdapter.getChild(0, 0);
 
 
-        //Tourism
-        gvCommon = (GridView) findViewById(R.id.gvCommon);
-        adapterTourPackage = new AdapterTourPackage(activity, StaticAccess.tourPic, StaticAccess.tourTitle, StaticAccess.duration, StaticAccess.detail);
-        gvCommon.setAdapter(adapterTourPackage);
-        gvCommon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(activity, TourDetailActivity.class);
-
-                /*int tourPic = StaticAccess.tourPic[position];
-                String tourTitle = StaticAccess.tourTitle[position];
-                String duration = StaticAccess.duration[position];
-                String detail = StaticAccess.detail[position];
-
-                intent.putExtra("tourPic", tourPic);
-                intent.putExtra("tourPic", tourTitle);
-                intent.putExtra("tourPic", duration);
-                intent.putExtra("tourPic", detail);*/
-
-                startActivity(intent);
-            }
-        });
-
+        setFragment(mainFragment);
 
     }
 
@@ -314,5 +295,13 @@ public class MainActivity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+
+    protected void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction transactionMonth = fragmentManager.beginTransaction();
+        transactionMonth.addToBackStack(null);
+        transactionMonth.replace(R.id.flSisMenu, fragment, FRAGMENT_FLAG).commit();
+
+    }
 
 }
