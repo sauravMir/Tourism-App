@@ -62,6 +62,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
             public void onClick(View v) {
                 Intent intent = new Intent(activity, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
