@@ -6,6 +6,7 @@ package com.educareapps.tourism;
 
 public class Tour {
 
+    private  long id=0;
     private int pic = 0;
     private String title = "";
     private String duration = "";
@@ -41,6 +42,13 @@ public class Tour {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
 }

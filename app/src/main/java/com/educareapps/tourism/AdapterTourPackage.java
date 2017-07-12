@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.educareapps.mylibrary.ImageProcessing;
 
+import java.util.ArrayList;
 
 
 /**
@@ -24,15 +25,12 @@ public class AdapterTourPackage extends BaseAdapter {
     String[] tourTitle;
     String[] duration;
     String[] detail;
-
+    ArrayList<Tour> tripArr;
     LayoutInflater inflater;
 
-    public AdapterTourPackage(Context context, int[] tourPic, String[] tourTitle, String[] duration, String[] detail ){
+    public AdapterTourPackage(Context context,   ArrayList<Tour> tripArr ){
         this.context = context;
-        this.tourPic = tourPic;
-        this.tourTitle = tourTitle;
-        this.duration = duration;
-        this.detail = detail;
+        this.tripArr=tripArr;
         imageProcessing = new ImageProcessing(context);
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -40,7 +38,7 @@ public class AdapterTourPackage extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return tourPic.length;
+        return tripArr.size();
     }
 
     @Override
@@ -76,10 +74,10 @@ public class AdapterTourPackage extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.ivGridItem.setImageResource(tourPic[position]);
-        holder.tvTitle.setText(tourTitle[position]);
-        holder.tvDuration.setText(duration[position]);
-        holder.tvDetail.setText(detail[position]);
+        holder.ivGridItem.setImageResource(tripArr.get(position).getPic());
+        holder.tvTitle.setText(tripArr.get(position).getTitle());
+        holder.tvDuration.setText(tripArr.get(position).getDuration());
+        holder.tvDetail.setText(tripArr.get(position).getDetail());
 
         //imageProcessing.setImageWith_loader(holder.ivGridItem, tasks.get(position).getTaskImage() );
         //holder.ivGridItem.setImageBitmap(imageProcessing.getImage(tasks.get(position).getTaskImage()));
