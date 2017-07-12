@@ -30,6 +30,7 @@ public class MainFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_main, null);
         activity = (MainActivity) getActivity();
 
+
         gvCommon = (GridView) v.findViewById(R.id.gvCommon);
         adapterTourPackage = new AdapterTourPackage(activity, tourPic, StaticAccess.tourTitle, StaticAccess.duration, StaticAccess.detail);
         gvCommon.setAdapter(adapterTourPackage);
