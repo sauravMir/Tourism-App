@@ -16,6 +16,8 @@ import com.educareapps.tourism.R;
 import com.educareapps.tourism.StaticAccess;
 import com.educareapps.tourism.TourDetailActivity;
 
+import static com.educareapps.tourism.StaticAccess.tourPic;
+
 public class MainFragment extends Fragment {
 
     MainActivity activity;
@@ -29,31 +31,29 @@ public class MainFragment extends Fragment {
         activity = (MainActivity) getActivity();
 
         gvCommon = (GridView) v.findViewById(R.id.gvCommon);
-        adapterTourPackage = new AdapterTourPackage(activity, StaticAccess.tourPic, StaticAccess.tourTitle, StaticAccess.duration, StaticAccess.detail);
+        adapterTourPackage = new AdapterTourPackage(activity, tourPic, StaticAccess.tourTitle, StaticAccess.duration, StaticAccess.detail);
         gvCommon.setAdapter(adapterTourPackage);
         gvCommon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(activity, TourDetailActivity.class);
 
-                /*int tourPic = StaticAccess.tourPic[position];
+                //int tourPic = StaticAccess.tourPic[position];
                 String tourTitle = StaticAccess.tourTitle[position];
                 String duration = StaticAccess.duration[position];
                 String detail = StaticAccess.detail[position];
 
-                intent.putExtra("tourPic", tourPic);
-                intent.putExtra("tourPic", tourTitle);
-                intent.putExtra("tourPic", duration);
-                intent.putExtra("tourPic", detail);*/
+                //intent.putExtra("tourPic", tourPic);
+                intent.putExtra("tourTitle", tourTitle);
+                intent.putExtra("duration", duration);
+                intent.putExtra("detail", detail);
 
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 
-        // information_tv = (TextView) v.findViewById(R.id.informationText);
-
         return v;
-
     }
 
 }

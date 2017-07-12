@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,15 +48,15 @@ public class TourDetailActivity extends BaseActivity  implements  BaseSliderView
         url_maps.put("Game of Thrones", "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
 
 
-        /*tourPic = getIntent().getIntExtra("tourPic",0);
+        //tourPic = getIntent().getIntExtra("tourPic",0);
         tourTitle = getIntent().getStringExtra("tourTitle");
         duration = getIntent().getStringExtra("duration");
-        detail = getIntent().getStringExtra("detail");*/
+        detail = getIntent().getStringExtra("detail");
 
-        /*ivtourDetailPic.setImageResource(tourPic);
+       // ivtourDetailPic.setImageResource(tourPic);
         tvDetailTitle.setText(tourTitle);
         tvDetailDuration.setText(duration);
-        tvDetailExplain.setText(detail);*/
+        tvDetailExplain.setText(detail);
 
 
         ibtnDetailBack.setOnClickListener(new View.OnClickListener() {
