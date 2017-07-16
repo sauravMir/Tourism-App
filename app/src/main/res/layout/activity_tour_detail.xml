@@ -88,7 +88,22 @@
         android:id="@+id/ibtnDetailBack"
         android:layout_width="@dimen/fifty"
         android:layout_height="@dimen/fifty"
+        android:scaleType="fitCenter"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_admin_move_l" />
+
+
+    <ImageButton
+        android:id="@+id/ibtnCall"
+        android:layout_width="@dimen/fifty"
+        android:layout_height="@dimen/fifty"
+        android:scaleType="fitCenter"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/twenty"
+        android:layout_centerInParent="true"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_phone" />
+
+
 
 </RelativeLayout>

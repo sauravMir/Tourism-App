@@ -1,6 +1,7 @@
 package com.educareapps.tourism;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +20,7 @@ import com.educareapps.mylibrary.BaseActivity;
 import java.util.HashMap;
 
 public class TourDetailActivity extends BaseActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
-    ImageButton ibtnDetailBack;
+    ImageButton ibtnDetailBack, ibtnCall;
     TourDetailActivity activity;
     int tourPic;
 
@@ -35,6 +36,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
 
         activity = this;
         ibtnDetailBack = (ImageButton) findViewById(R.id.ibtnDetailBack);
+        ibtnCall = (ImageButton) findViewById(R.id.ibtnCall);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
         tvDetailTitle = (TextView) findViewById(R.id.tvDetailTitle);
         tvDetailDuration = (TextView) findViewById(R.id.tvDetailDuration);
@@ -62,6 +64,17 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
             public void onClick(View v) {
                 Intent intent = new Intent(activity, MainActivity.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+        ibtnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String number = getString(R.string.calling_numkber);
+                Uri call = Uri.parse(getString(R.string.tel) + number);
+                Intent surf = new Intent(Intent.ACTION_DIAL, call);
+                startActivity(surf);
                 finish();
             }
         });
