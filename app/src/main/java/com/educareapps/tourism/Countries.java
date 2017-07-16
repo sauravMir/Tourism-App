@@ -1,6 +1,6 @@
 package com.educareapps.tourism;
 
-public class RadioStation {
+public class Countries {
 
     private String name = "";
     private String link = "";

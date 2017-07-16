@@ -31,9 +31,9 @@ public class MainActivity extends BaseActivity  {
     private ArrayAdapter<String> mAdapter;
     private ActionBarDrawerToggle mDrawerToggle;
     private String mActivityTitle;
-    private LinkedHashMap<String, RadioCategory> subjects = new LinkedHashMap<String, RadioCategory>();
-    private ArrayList<RadioCategory> rdCategoryLst = new ArrayList<RadioCategory>();
-    private RadioAdapter listAdapter;
+    private LinkedHashMap<String, CountryCategory> subjects = new LinkedHashMap<String, CountryCategory>();
+    private ArrayList<CountryCategory> rdCategoryLst = new ArrayList<CountryCategory>();
+    private CountriesAdapter listAdapter;
     MainActivity activity;
     private static final String FRAGMENT_FLAG = "fragment_SIS_FLAG";
 
@@ -71,7 +71,7 @@ public class MainActivity extends BaseActivity  {
         }
         int bufferSize = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
         System.out.println("BUFFER SIZE VALUE IS " + bufferSize);
-        RadioStation radioStation = (RadioStation) listAdapter.getChild(0, 0);
+        Countries countries = (Countries) listAdapter.getChild(0, 0);
 
 
         setFragment(mainFragment);
@@ -89,7 +89,7 @@ public class MainActivity extends BaseActivity  {
         //get reference of the ExpandableListView
         simpleExpandableListView = (ExpandableListView) findViewById(R.id.simpleExpandableListView);
         // create the adapter by passing your ArrayList data
-        listAdapter = new RadioAdapter(MainActivity.this, rdCategoryLst);
+        listAdapter = new CountriesAdapter(MainActivity.this, rdCategoryLst);
         // attach the adapter to the expandable list view
         simpleExpandableListView.setAdapter(listAdapter);
 
@@ -101,7 +101,7 @@ public class MainActivity extends BaseActivity  {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 //get the group header
-                //RadioCategory headerInfo = rdCategoryLst.get(groupPosition);
+                //CountryCategory headerInfo = rdCategoryLst.get(groupPosition);
                 //get the child info
 
                 if (previousSelectedItem != null) {
@@ -136,68 +136,6 @@ public class MainActivity extends BaseActivity  {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*private void addDrawerItems() {
-
-        loadData();
-
-        //get reference of the ExpandableListView
-        simpleExpandableListView = (ExpandableListView) findViewById(R.id.simpleExpandableListView);
-        // create the adapter by passing your ArrayList data
-        listAdapter = new RadioAdapter(MainActivity.this, rdCategoryLst);
-        // attach the adapter to the expandable list view
-        simpleExpandableListView.setAdapter(listAdapter);
-
-        //expand all the Groups
-        expandAll();
-
-        // setOnChildClickListener listener for child row click
-        simpleExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                //get the group header
-                RadioCategory headerInfo = rdCategoryLst.get(groupPosition);
-                //get the child info
-
-                if (previousSelectedItem != null) {
-                    previousSelectedItem.setBackgroundColor(Color.parseColor("#ffeeeeee"));
-                }
-                previousSelectedItem = v;
-                v.setBackgroundColor(getResources().getColor(R.color.appColor));
-
-                RadioStation detailInfo = headerInfo.getRadioStationList().get(childPosition);
-
-                return false;
-            }
-        });
-        // setOnGroupClickListener listener for group heading click
-        simpleExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                //get the group header
-                RadioCategory headerInfo = rdCategoryLst.get(groupPosition);
-
-                return false;
-            }
-        });
-
-
-    }*/
-
-
-
 
 
     private void setupDrawer() {
@@ -299,17 +237,6 @@ public class MainActivity extends BaseActivity  {
         addRadioStation(getString(R.string.international_radio), "Singapur", "");
 
 
-       /* addRadioStation(getString(R.string.local_radio), "Radio Plus", "http://s4.voscast.com:8432");
-        addRadioStation(getString(R.string.local_radio), "Radio One", "http://173.208.157.101:8020 ");
-        addRadioStation(getString(R.string.local_radio), "Top Fm", "http://webcast.orange.mu:1935");
-        addRadioStation(getString(R.string.local_radio), "MBC radio", "http://www.mbcradio.tv/sites/all/themes/mbcradiotv/templates/radio-mauritius.html");
-
-        addRadioStation(getString(R.string.local_radio), "Taal FM ", "http://www.mbcradio.tv/sites/all/themes/mbcradiotv/templates/taalfm.html");
-        addRadioStation(getString(R.string.local_radio), "Kool Fm", "http://www.mbcradio.tv/sites/all/themes/mbcradiotv/templates/koolfm.html");
-        addRadioStation(getString(R.string.local_radio), "Music FM", "http://www.mbcradio.tv/sites/all/themes/mbcradiotv/templates/musicfm.html");
-        addRadioStation(getString(R.string.local_radio), "Best fm ", "http://www.mbcradio.tv/sites/all/themes/mbcradiotv/templates/bestfm.html");
-    */
-
     }
 
 
@@ -319,24 +246,24 @@ public class MainActivity extends BaseActivity  {
         int groupPosition = 0;
 
         //check the hash map if the group already exists
-        RadioCategory headerInfo = subjects.get(rdCategory);
+        CountryCategory headerInfo = subjects.get(rdCategory);
         //add the group if doesn't exists
         if (headerInfo == null) {
-            headerInfo = new RadioCategory();
+            headerInfo = new CountryCategory();
             headerInfo.setName(rdCategory);
             subjects.put(rdCategory, headerInfo);
             rdCategoryLst.add(headerInfo);
         }
 
         //get the children for the group
-        ArrayList<RadioStation> productList = headerInfo.getRadioStationList();
+        ArrayList<Countries> productList = headerInfo.getRadioStationList();
       /*  //size of the children list
         int listSize = productList.size();
         //add to the counter
         listSize++;*/
 
         //create a new child and add that to the group
-        RadioStation aRadio = new RadioStation();
+        Countries aRadio = new Countries();
         aRadio.setLink(link);
         aRadio.setName(title);
         productList.add(aRadio);

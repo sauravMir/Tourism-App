@@ -2,10 +2,10 @@ package com.educareapps.tourism;
 
 import java.util.ArrayList;
 
-public class RadioCategory {
+public class CountryCategory {
 
     private String name;
-    private ArrayList<RadioStation> list = new ArrayList<RadioStation>();
+    private ArrayList<Countries> list = new ArrayList<Countries>();
 
     public String getName() {
         return name;
@@ -15,11 +15,11 @@ public class RadioCategory {
         this.name = name;
     }
 
-    public ArrayList<RadioStation> getRadioStationList() {
+    public ArrayList<Countries> getRadioStationList() {
         return list;
     }
 
-    public void setRadioStationList(ArrayList<RadioStation> radioList) {
+    public void setRadioStationList(ArrayList<Countries> radioList) {
         this.list = radioList;
     }
 

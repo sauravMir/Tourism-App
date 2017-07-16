@@ -13,19 +13,19 @@ import java.util.ArrayList;
 /**
  * Created by Gourav on 08-03-2016.
  */
-public class RadioAdapter extends BaseExpandableListAdapter {
+public class CountriesAdapter extends BaseExpandableListAdapter {
 
     private Context context;
-    private ArrayList<RadioCategory> deptList;
+    private ArrayList<CountryCategory> deptList;
 
-    public RadioAdapter(Context context, ArrayList<RadioCategory> deptList) {
+    public CountriesAdapter(Context context, ArrayList<CountryCategory> deptList) {
         this.context = context;
         this.deptList = deptList;
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        ArrayList<RadioStation> productList = deptList.get(groupPosition).getRadioStationList();
+        ArrayList<Countries> productList = deptList.get(groupPosition).getRadioStationList();
         return productList.get(childPosition);
     }
 
@@ -38,7 +38,7 @@ public class RadioAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild,
                              View view, ViewGroup parent) {
 
-        RadioStation detailInfo = (RadioStation) getChild(groupPosition, childPosition);
+        Countries detailInfo = (Countries) getChild(groupPosition, childPosition);
         if (view == null) {
             LayoutInflater infalInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = infalInflater.inflate(R.layout.child_items, null);
@@ -55,7 +55,7 @@ public class RadioAdapter extends BaseExpandableListAdapter {
     @Override
     public int getChildrenCount(int groupPosition) {
 
-        ArrayList<RadioStation> productList = deptList.get(groupPosition).getRadioStationList();
+        ArrayList<Countries> productList = deptList.get(groupPosition).getRadioStationList();
         return productList.size();
 
     }
@@ -79,7 +79,7 @@ public class RadioAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isLastChild, View view,
                              ViewGroup parent) {
 
-        RadioCategory headerInfo = (RadioCategory) getGroup(groupPosition);
+        CountryCategory headerInfo = (CountryCategory) getGroup(groupPosition);
         if (view == null) {
             LayoutInflater inf = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inf.inflate(R.layout.group_items, null);

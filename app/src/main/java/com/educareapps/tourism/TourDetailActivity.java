@@ -1,6 +1,9 @@
 package com.educareapps.tourism;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,9 +21,10 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.educareapps.mylibrary.BaseActivity;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class TourDetailActivity extends BaseActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
-    ImageButton ibtnDetailBack, ibtnCall;
+    ImageButton ibtnDetailBack, ibtnCall, ibtnMail;
     TourDetailActivity activity;
     int tourPic;
 
@@ -37,6 +41,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         activity = this;
         ibtnDetailBack = (ImageButton) findViewById(R.id.ibtnDetailBack);
         ibtnCall = (ImageButton) findViewById(R.id.ibtnCall);
+        ibtnMail = (ImageButton) findViewById(R.id.ibtnMail);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
         tvDetailTitle = (TextView) findViewById(R.id.tvDetailTitle);
         tvDetailDuration = (TextView) findViewById(R.id.tvDetailDuration);
@@ -76,6 +81,14 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
                 Intent surf = new Intent(Intent.ACTION_DIAL, call);
                 startActivity(surf);
                 finish();
+            }
+        });
+
+        ibtnMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMail();
+                //finish();
             }
         });
 
@@ -137,4 +150,26 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         mDemoSlider.stopAutoCycle();
         super.onStop();
     }
+
+    private void sendMail() {
+        Intent myIntent = new Intent(Intent.ACTION_SEND);
+        PackageManager pm = getPackageManager();
+        Intent tempIntent = new Intent(Intent.ACTION_SEND);
+        tempIntent.setType("*/*");
+        List<ResolveInfo> resInfo = pm.queryIntentActivities(tempIntent, 0);
+        for (int i = 0; i < resInfo.size(); i++) {
+            ResolveInfo ri = resInfo.get(i);
+            if (ri.activityInfo.packageName.contains("android.gm")) {
+                myIntent.setComponent(new ComponentName(ri.activityInfo.packageName, ri.activityInfo.name));
+                myIntent.setAction(Intent.ACTION_SEND);
+                myIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"edulifeapps01@gmail.com "});
+                myIntent.setType("message/rfc822");
+                myIntent.putExtra(Intent.EXTRA_SUBJECT, "Tour Info");
+                myIntent.putExtra(Intent.EXTRA_TEXT, getIntent().getStringExtra("Tour Info"));
+            }
+        }
+        startActivity(myIntent);
+
+    }
+
 }
