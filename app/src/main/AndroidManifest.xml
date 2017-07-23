@@ -25,7 +25,6 @@
         <activity
             android:name=".TourDetailActivity"
             android:screenOrientation="sensorPortrait" />
-        <activity android:name="com.educareapps.activities.HomeActivity" />
     </application>
 
 </manifest>
