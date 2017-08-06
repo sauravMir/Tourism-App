@@ -53,17 +53,8 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
 
         staticInstance=StaticInstance.getInstance();
         tourismPlaceModel=staticInstance.getTourismPlaceModel();
-        
-        HashMap<String, String> url_maps = new HashMap<String, String>();
-        url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
-        url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
-        url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
-        url_maps.put("Game of Thrones", "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
 
 
-        tourTitle = getIntent().getStringExtra("tourTitle");
-        duration = getIntent().getStringExtra("duration");
-        detail = getIntent().getStringExtra("detail");
 
         tvDetailTitle.setText(tourTitle);
         tvDetailDuration.setText(duration);
@@ -99,22 +90,30 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         });
 
 
-        for (String name : url_maps.keySet()) {
+
+        for(int i=0;i<tourismPlaceModel.getImageArr().size();i++){
+
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
             textSliderView
-                    .description(name)
-                    .image(url_maps.get(name))
+
+                    .image(tourismPlaceModel.getImageArr().get(i))
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(this);
 
-            //add your extra information
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle()
-                    .putString("extra", name);
+
 
             mDemoSlider.addSlider(textSliderView);
+
         }
+
+
+        tourTitle = tourismPlaceModel.getPackageName();
+        duration =tourismPlaceModel.getPricePerPerson() ;
+        detail = tourismPlaceModel.getCountry();
+
+
+
         mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
         mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
@@ -182,9 +181,6 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         startActivity(myIntent);
 
     }
-
-
-
 
     // Full Screen display
     public void fullScreencall() {
