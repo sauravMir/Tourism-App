@@ -118,22 +118,35 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         }
 
 
-
-
-
-
         mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
         mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
         mDemoSlider.setDuration(4000);
         mDemoSlider.addOnPageChangeListener(this);
 
-        rtBarDetail.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+        if(tourismPlaceModel.getDescriptions().contains("3")){
+            rtBarDetail.setRating(3);
+        }else  if(tourismPlaceModel.getDescriptions().contains("2")){
+            rtBarDetail.setRating(2);
+        }else  if(tourismPlaceModel.getDescriptions().contains("1")){
+            rtBarDetail.setRating(1);
+        }else  if(tourismPlaceModel.getDescriptions().contains("4")){
+            rtBarDetail.setRating(4);
+        }else  if(tourismPlaceModel.getDescriptions().contains("5")){
+            rtBarDetail.setRating(5);
+        }else{
+            rtBarDetail.setRating(3);
+        }
+
+        rtBarDetail.setNumStars(5);
+        rtBarDetail.setClickable(false);
+
+       /* rtBarDetail.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 Toast.makeText(activity, String.valueOf(ratingBar.getRating()), Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         fullScreencall();
         UiChangeListener();

@@ -315,11 +315,12 @@ public class MainActivity extends BaseActivity {
 
                 if (previousSelectedItem != null) {
                     previousSelectedItem.setBackgroundColor(Color.parseColor("#ffeeeeee"));
-                    mainFragment.loadCountryWiseTrip(rdCategoryLst.get(groupPosition).getRadioStationList().get(childPosition).getLink());
+
                 }
 
                 previousSelectedItem = v;
                 v.setBackgroundColor(getResources().getColor(R.color.appColor));
+                mainFragment.loadCountryWiseTrip(rdCategoryLst.get(groupPosition).getRadioStationList().get(childPosition).getLink());
                 if (isDrawerOpen) {
                     isDrawerOpen = true;
                     mDrawerLayout.closeDrawers();
