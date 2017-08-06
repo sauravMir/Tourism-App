@@ -22,7 +22,6 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.educareapps.model.TourismPlaceModel;
 import com.educareapps.utilities.StaticInstance;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class TourDetailActivity extends BaseActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
@@ -30,7 +29,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
     TourDetailActivity activity;
     int tourPic;
 
-    TextView tvDetailTitle, tvDetailDuration, tvDetailExplain;
+    TextView tvDetailCountry, tvDetailTitle, tvDetailDuration, tvDetailExplain;
     RatingBar rtBarDetail;
     String tourTitle, duration, detail;
     SliderLayout mDemoSlider;
@@ -48,6 +47,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         ibtnMail = (ImageButton) findViewById(R.id.ibtnMail);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
         tvDetailTitle = (TextView) findViewById(R.id.tvDetailTitle);
+        tvDetailCountry = (TextView) findViewById(R.id.tvDetailCountry);
         tvDetailDuration = (TextView) findViewById(R.id.tvDetailDuration);
         tvDetailExplain = (TextView) findViewById(R.id.tvDetailExplain);
         rtBarDetail = (RatingBar) findViewById(R.id.rtBarDetail);
@@ -57,13 +57,15 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         tourismPlaceModel=staticInstance.getTourismPlaceModel();
 
 
+       /* tourTitle = tourismPlaceModel.getPackageName();
+        duration =tourismPlaceModel.getPricePerPerson() ;
+        detail = tourismPlaceModel.getCountry();*/
 
 
-
-
-        tvDetailTitle.setText(tourTitle);
-        tvDetailDuration.setText(duration);
-        tvDetailExplain.setText(detail);
+        tvDetailTitle.setText(tourismPlaceModel.getPackageName());
+        tvDetailCountry.setText(tourismPlaceModel.getCountry());
+        tvDetailDuration.setText("PPP: "+tourismPlaceModel.getPricePerPerson()+" BDT");
+        tvDetailExplain.setText(tourismPlaceModel.getDescriptions());
 
 
         ibtnDetailBack.setOnClickListener(new View.OnClickListener() {
@@ -116,9 +118,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         }
 
 
-        tourTitle = tourismPlaceModel.getPackageName();
-        duration =tourismPlaceModel.getPricePerPerson() ;
-        detail = tourismPlaceModel.getCountry();
+
 
 
 
