@@ -65,12 +65,14 @@ public class MainActivity extends BaseActivity {
         activity = this;
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
+        progressDialog = new ProgressDialog(activity);
+        mainFragment = new MainFragment();
+
         addDrawerItems();
         setupDrawer();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        progressDialog = new ProgressDialog(activity);
-        mainFragment = new MainFragment();
+
 
         marshMallowPermission = new MarshMallowPermission(activity);
 
@@ -84,7 +86,7 @@ public class MainActivity extends BaseActivity {
 //        Countries countries = (Countries) listAdapter.getChild(0, 0);
 
 
-        setFragment(mainFragment);
+
 
     }
 
@@ -293,7 +295,6 @@ public class MainActivity extends BaseActivity {
         ParserMode parserMode = new ParserMode(activity, response);
         parserMode.parser();
 
-
         // create the adapter by passing your ArrayList data
         if (rdCategoryLst.size() > 0)
             listAdapter = new CountriesAdapter(MainActivity.this, rdCategoryLst);
@@ -313,7 +314,7 @@ public class MainActivity extends BaseActivity {
 
                 if (previousSelectedItem != null) {
                     previousSelectedItem.setBackgroundColor(Color.parseColor("#ffeeeeee"));
-                    mainFragment.loadCountryWiseTrip(childPosition);
+                    mainFragment.loadCountryWiseTrip(rdCategoryLst.get(groupPosition).getRadioStationList().get(childPosition).getLink());
                 }
 
                 previousSelectedItem = v;
@@ -340,6 +341,9 @@ public class MainActivity extends BaseActivity {
                 return false;
             }
         });
+        setFragment(mainFragment);
+        mainFragment.loadCountryWiseTrip(rdCategoryLst.get(0).getRadioStationList().get(0).getLink());
+
     }
 
 
@@ -353,9 +357,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void hideProgress() {
-        if (progressDialog != null)
+
             if (progressDialog.isShowing()) {
-                progressDialog.show();
+                progressDialog.hide();
             }
     }
 }
