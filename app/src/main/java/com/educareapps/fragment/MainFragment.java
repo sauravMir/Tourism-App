@@ -30,7 +30,6 @@ public class MainFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_main, null);
         activity = (MainActivity) getActivity();
 
-
         gvCommon = (GridView) v.findViewById(R.id.gvCommon);
         loadCountryWiseTrip(0);
 
@@ -46,7 +45,7 @@ public class MainFragment extends Fragment {
                 Tour tour_00 = new Tour();
                 tour_00.setId(1);
                 tour_00.setTitle("Room 1");
-                tour_00.setDetail("Compatable room for guest");
+                tour_00.setDetail(getString(R.string.detail));
                 tour_00.setDuration(" 1 night");
                 tour_00.setPic(R.drawable.k);
                 tripArr.add(tour_00);

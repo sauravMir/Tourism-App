@@ -64,17 +64,18 @@ public class BaseActivity extends ActionBarActivity {
         });
     }*/
 
+
     // Device back pressed
-  /*  @Override
+    @Override
     public void onBackPressed() {
 
-    }*/
+    }
 
-   /* @Override
+    @Override
     protected void onResume() {
         super.onResume();
         //fullScreencall();
         //UiChangeListener();
-    }*/
+    }
 
 }
