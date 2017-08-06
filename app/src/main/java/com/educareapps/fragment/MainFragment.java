@@ -18,12 +18,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.educareapps.adapter.AdapterTourPackage;
+import com.educareapps.model.TourismPlaceModel;
 import com.educareapps.parser.ParserMode;
+import com.educareapps.parser.TourismPlaceJson;
 import com.educareapps.tourism.CountryCategory;
 import com.educareapps.tourism.MainActivity;
 import com.educareapps.tourism.R;
 import com.educareapps.tourism.Tour;
 import com.educareapps.tourism.TourDetailActivity;
+import com.educareapps.utilities.RootUrl;
 
 import org.json.JSONArray;
 
@@ -35,6 +38,7 @@ public class MainFragment extends Fragment {
     GridView gvCommon;
     AdapterTourPackage adapterTourPackage;
     ArrayList<Tour> tripArr;
+    ArrayList<TourismPlaceModel> tripArrTemp;
     ArrayList<CountryCategory> rdCategoryLst;
     ProgressDialog progressDialog;
     @Override
@@ -55,7 +59,9 @@ public class MainFragment extends Fragment {
 
     public void loadCountryWiseTrip(String countryId) {
            // Make Request
-
+        //http://192.52.243.6/TourismApp/Packages/getPackageByID?id=1
+        showProgress();
+        makeRequest(RootUrl.RootUrl+"getPackageByID?id="+countryId);
 
 
     }
@@ -79,14 +85,19 @@ public class MainFragment extends Fragment {
 
             }
         });
-        RequestQueue requestQueue = Volley.newRequestQueue(activity);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jreq);
 
     }
 
     private void parserJson(JSONArray response) {
-        ParserMode parserMode = new ParserMode(activity, response);
+        TourismPlaceJson parserMode = new TourismPlaceJson(activity, response);
         parserMode.parser();
+        tripArrTemp=new ArrayList<>();
+        tripArrTemp=parserMode.tourismArr;
+        if(tripArrTemp.size()>0)
+            loadData(tripArrTemp);
+
     }
 
     public void setCategoryLst(ArrayList<CountryCategory> rdCategoryLst) {
@@ -96,7 +107,7 @@ public class MainFragment extends Fragment {
 
     }
 
-    public  void loadData(final ArrayList<Tour> tripArr) {
+    public  void loadData(final ArrayList<TourismPlaceModel> tripArr) {
         if (tripArr != null) ;
         adapterTourPackage = new AdapterTourPackage(activity, tripArr);
         gvCommon.setAdapter(adapterTourPackage);
@@ -105,13 +116,13 @@ public class MainFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(activity, TourDetailActivity.class);
 
-                String tourTitle = tripArr.get(position).getTitle();
+                /*String tourTitle = tripArr.get(position).getTitle();
                 String duration = tripArr.get(position).getDuration();
                 String detail = tripArr.get(position).getDetail();
 
                 intent.putExtra("tourTitle", tourTitle);
                 intent.putExtra("duration", duration);
-                intent.putExtra("detail", detail);
+                intent.putExtra("detail", detail);*/
 
                 startActivity(intent);
                 getActivity().finish();
