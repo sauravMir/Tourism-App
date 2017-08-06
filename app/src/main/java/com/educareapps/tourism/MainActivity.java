@@ -84,8 +84,6 @@ public class MainActivity extends BaseActivity {
 //        Countries countries = (Countries) listAdapter.getChild(0, 0);
 
 
-
-
     }
 
     View previousSelectedItem;
@@ -228,15 +226,12 @@ public class MainActivity extends BaseActivity {
 
 
         //create a new child and add that to the group
-        if(!isCountry(productList,title)){
+        if (!isCountry(productList, title)) {
             Countries aRadio = new Countries();
             aRadio.setLink(link);
             aRadio.setName(title);
             productList.add(aRadio);
         }
-
-
-
 
 
         headerInfo.setRadioStationList(productList);
@@ -354,7 +349,7 @@ public class MainActivity extends BaseActivity {
 
 
     private void showProgress() {
-        if (progressDialog != null){
+        if (progressDialog != null) {
             progressDialog.setMessage("please wait...");
             progressDialog.setCancelable(false);
             progressDialog.show();
@@ -364,20 +359,21 @@ public class MainActivity extends BaseActivity {
 
     private void hideProgress() {
 
-            if (progressDialog.isShowing()) {
-                progressDialog.hide();
-            }
+        if (progressDialog.isShowing()) {
+            progressDialog.hide();
+        }
     }
-  public   boolean isCountry(ArrayList<Countries> productList,String name){
-        boolean isCountry=false;
-      for (int i=0;i<productList.size();i++){
-          if(productList.get(i).getName().equals(name)){
-              isCountry=true;
-              break;
-          }else {
-              isCountry=false;
-          }
-      }
-      return isCountry;
+
+    public boolean isCountry(ArrayList<Countries> productList, String name) {
+        boolean isCountry = false;
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getName().equals(name)) {
+                isCountry = true;
+                break;
+            } else {
+                isCountry = false;
+            }
+        }
+        return isCountry;
     }
 }

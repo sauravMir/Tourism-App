@@ -19,6 +19,8 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.educareapps.model.TourismPlaceModel;
+import com.educareapps.utilities.StaticInstance;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +34,8 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
     RatingBar rtBarDetail;
     String tourTitle, duration, detail;
     SliderLayout mDemoSlider;
-
+    StaticInstance staticInstance;
+    TourismPlaceModel tourismPlaceModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,9 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         tvDetailExplain = (TextView) findViewById(R.id.tvDetailExplain);
         rtBarDetail = (RatingBar) findViewById(R.id.rtBarDetail);
 
+        staticInstance=StaticInstance.getInstance();
+        tourismPlaceModel=staticInstance.getTourismPlaceModel();
+        
         HashMap<String, String> url_maps = new HashMap<String, String>();
         url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
         url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
