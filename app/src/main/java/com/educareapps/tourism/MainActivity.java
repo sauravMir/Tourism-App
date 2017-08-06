@@ -3,6 +3,7 @@ package com.educareapps.tourism;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.media.AudioFormat;
@@ -10,21 +11,31 @@ import android.media.AudioRecord;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.educareapps.fragment.MainFragment;
 import com.educareapps.mylibrary.BaseActivity;
 import com.educareapps.mylibrary.MarshMallowPermission;
+import com.educareapps.parser.ParserMode;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-public class MainActivity extends BaseActivity  {
+public class MainActivity extends BaseActivity {
 
     private ExpandableListView simpleExpandableListView;
     private DrawerLayout mDrawerLayout;
@@ -41,8 +52,7 @@ public class MainActivity extends BaseActivity  {
     private static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
     private static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
     MarshMallowPermission marshMallowPermission;
-
-
+    ProgressDialog progressDialog;
     //Tourism
     MainFragment mainFragment;
     boolean isDrawerOpen = false;
@@ -59,7 +69,7 @@ public class MainActivity extends BaseActivity  {
         setupDrawer();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
+        progressDialog = new ProgressDialog(activity);
         mainFragment = new MainFragment();
 
         marshMallowPermission = new MarshMallowPermission(activity);
@@ -71,7 +81,7 @@ public class MainActivity extends BaseActivity  {
         }
         int bufferSize = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
         System.out.println("BUFFER SIZE VALUE IS " + bufferSize);
-        Countries countries = (Countries) listAdapter.getChild(0, 0);
+//        Countries countries = (Countries) listAdapter.getChild(0, 0);
 
 
         setFragment(mainFragment);
@@ -81,58 +91,12 @@ public class MainActivity extends BaseActivity  {
     View previousSelectedItem;
 
 
-
     private void addDrawerItems() {
-
-        loadData();
-
         //get reference of the ExpandableListView
         simpleExpandableListView = (ExpandableListView) findViewById(R.id.simpleExpandableListView);
-        // create the adapter by passing your ArrayList data
-        listAdapter = new CountriesAdapter(MainActivity.this, rdCategoryLst);
-        // attach the adapter to the expandable list view
-        simpleExpandableListView.setAdapter(listAdapter);
-
-        //expand all the Groups
-        expandAll();
-
-        // setOnChildClickListener listener for child row click
-        simpleExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                //get the group header
-                //CountryCategory headerInfo = rdCategoryLst.get(groupPosition);
-                //get the child info
-
-                if (previousSelectedItem != null) {
-                    previousSelectedItem.setBackgroundColor(Color.parseColor("#ffeeeeee"));
-                    mainFragment.loadCountryWiseTrip(childPosition);
-                }
-
-                previousSelectedItem = v;
-                v.setBackgroundColor(getResources().getColor(R.color.appColor));
-                if (isDrawerOpen) {
-                    isDrawerOpen = true;
-                    mDrawerLayout.closeDrawers();
-
-
-                } else {
-                    isDrawerOpen = true;
-                    mDrawerLayout.closeDrawers();
-
-                }
-
-                return false;
-            }
-        });
-        // setOnGroupClickListener listener for group heading click
-        simpleExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-
-                return false;
-            }
-        });
+//        http://192.52.243.6/TourismApp/Packages/getCountryList/
+        showProgress();
+        makeRequest(RootUrl.RootUrl + "getCountryList");
 
 
     }
@@ -218,7 +182,7 @@ public class MainActivity extends BaseActivity  {
     }
 
     //load some initial data into out list
-    private void loadData() {
+/*    private void loadData() {
 
         addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
         addRadioStation(getString(R.string.international_radio), "India", "");
@@ -237,11 +201,11 @@ public class MainActivity extends BaseActivity  {
         addRadioStation(getString(R.string.international_radio), "Singapur", "");
 
 
-    }
+    }*/
 
 
     //here we maintain our products in various departments
-    private int addRadioStation(String rdCategory, String title, String link) {
+    public int addRadioStation(String rdCategory, String title, String link) {
 
         int groupPosition = 0;
 
@@ -275,8 +239,6 @@ public class MainActivity extends BaseActivity  {
     }
 
 
-
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -289,7 +251,6 @@ public class MainActivity extends BaseActivity  {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-
             finish();
         }
         return super.onKeyDown(keyCode, event);
@@ -304,4 +265,97 @@ public class MainActivity extends BaseActivity  {
 
     }
 
+    /// making json request
+    private void makeRequest(String url) {
+        JsonArrayRequest jreq = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.e("Json", response.toString());
+                        parserJson(response);
+                        hideProgress();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Json", error.toString());
+                hideProgress();
+
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(activity);
+        requestQueue.add(jreq);
+
+    }
+
+    private void parserJson(JSONArray response) {
+        ParserMode parserMode = new ParserMode(activity, response);
+        parserMode.parser();
+
+
+        // create the adapter by passing your ArrayList data
+        if (rdCategoryLst.size() > 0)
+            listAdapter = new CountriesAdapter(MainActivity.this, rdCategoryLst);
+        // attach the adapter to the expandable list view
+        simpleExpandableListView.setAdapter(listAdapter);
+
+        //expand all the Groups
+        expandAll();
+
+        // setOnChildClickListener listener for child row click
+        simpleExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                //get the group header
+                //CountryCategory headerInfo = rdCategoryLst.get(groupPosition);
+                //get the child info
+
+                if (previousSelectedItem != null) {
+                    previousSelectedItem.setBackgroundColor(Color.parseColor("#ffeeeeee"));
+                    mainFragment.loadCountryWiseTrip(childPosition);
+                }
+
+                previousSelectedItem = v;
+                v.setBackgroundColor(getResources().getColor(R.color.appColor));
+                if (isDrawerOpen) {
+                    isDrawerOpen = true;
+                    mDrawerLayout.closeDrawers();
+
+
+                } else {
+                    isDrawerOpen = true;
+                    mDrawerLayout.closeDrawers();
+
+                }
+
+                return false;
+            }
+        });
+        // setOnGroupClickListener listener for group heading click
+        simpleExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+
+                return false;
+            }
+        });
+    }
+
+
+    private void showProgress() {
+        if (progressDialog != null){
+            progressDialog.setMessage("please wait...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+    }
+
+    private void hideProgress() {
+        if (progressDialog != null)
+            if (progressDialog.isShowing()) {
+                progressDialog.show();
+            }
+    }
 }
