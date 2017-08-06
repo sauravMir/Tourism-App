@@ -75,7 +75,7 @@ public class AdapterTourPackage extends BaseAdapter {
 //        holder.ivGridItem.setImageResource(tripArr.get(position).getImageArr().get(0));
          holder.tvTitle.setText(tripArr.get(position).getHotel());
          holder.tvDuration.setText(tripArr.get(position).getPlace());
-         holder.tvDetail.setText(tripArr.get(position).getPricePerPerson());
+         holder.tvDetail.setText("PPP: "+tripArr.get(position).getPricePerPerson()+" BDT");
 //        holder.tvDuration.setText(tripArr.get(position).getDuration());
 //        holder.tvDetail.setText(tripArr.get(position).getDetail());
 
