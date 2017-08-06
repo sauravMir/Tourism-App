@@ -26,6 +26,7 @@ import com.educareapps.tourism.MainActivity;
 import com.educareapps.tourism.R;
 import com.educareapps.tourism.Tour;
 import com.educareapps.tourism.TourDetailActivity;
+import com.educareapps.utilities.AppController;
 import com.educareapps.utilities.RootUrl;
 
 import org.json.JSONArray;
@@ -85,8 +86,7 @@ public class MainFragment extends Fragment {
 
             }
         });
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(jreq);
+        AppController.getInstance().addToRequestQueue(jreq);
 
     }
 
