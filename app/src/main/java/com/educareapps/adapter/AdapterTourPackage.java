@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.educareapps.model.TourismPlaceModel;
 import com.educareapps.tourism.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -69,6 +70,7 @@ public class AdapterTourPackage extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+        Picasso.with(context).load(tripArr.get(position).getImageArr().get(0)).into(holder.ivGridItem);
 
 //        holder.ivGridItem.setImageResource(tripArr.get(position).getImageArr().get(0));
          holder.tvTitle.setText(tripArr.get(position).getHotel());

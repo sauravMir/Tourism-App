@@ -65,8 +65,8 @@ public class TourismPlaceJson {
 
                     ArrayList<String> photoArr = new ArrayList<>();
                     if (jsonArray != null)
-                        for (int j = 0; j < jsonArray.length(); j++) {
-                            JSONObject photoJson = jsonArray.getJSONObject(i);
+                        for (int j = 0; j < jsonPhotoArray.length(); j++) {
+                            JSONObject photoJson = jsonPhotoArray.getJSONObject(i);
 //                        photoJson.getString(TAG_PHOTO_LINK);
                             photoArr.add(photoJson.getString(TAG_PHOTO_LINK));
                         }
