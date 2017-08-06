@@ -81,8 +81,8 @@
                     android:layout_gravity="right"
                     android:numStars="5"
                     android:rating="2.0"
-                    android:scaleX="0.5"
-                    android:scaleY="0.5"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6"
                     android:stepSize="0.5" />
 
             </LinearLayout>
@@ -149,8 +149,8 @@
         android:layout_height="@dimen/fifty"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/twenty"
-        android:layout_marginRight="@dimen/twenty"
+        android:layout_marginBottom="@dimen/ten"
+        android:layout_marginRight="@dimen/ten"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_phone" />

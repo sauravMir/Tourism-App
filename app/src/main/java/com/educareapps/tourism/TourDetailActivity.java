@@ -36,6 +36,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
     SliderLayout mDemoSlider;
     StaticInstance staticInstance;
     TourismPlaceModel tourismPlaceModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +52,12 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         tvDetailExplain = (TextView) findViewById(R.id.tvDetailExplain);
         rtBarDetail = (RatingBar) findViewById(R.id.rtBarDetail);
 
+
         staticInstance=StaticInstance.getInstance();
         tourismPlaceModel=staticInstance.getTourismPlaceModel();
+
+
+
 
 
 
@@ -163,7 +168,6 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
     }
 
 
-
     private void sendMail() {
         Intent myIntent = new Intent(Intent.ACTION_SEND);
         PackageManager pm = getPackageManager();
@@ -184,8 +188,6 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         startActivity(myIntent);
 
     }
-
-
 
 
     // Full Screen display
@@ -232,10 +234,6 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         fullScreencall();
         UiChangeListener();
     }
-
-
-
-
 
 
 }
