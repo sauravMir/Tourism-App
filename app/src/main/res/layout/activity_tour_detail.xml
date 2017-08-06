@@ -15,7 +15,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight=".3">
+            android:layout_weight=".4">
 
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"
@@ -35,7 +35,7 @@
             android:layout_height="@dimen/zero"
             android:layout_marginLeft="@dimen/ten"
             android:layout_marginRight="@dimen/five"
-            android:layout_weight=".7"
+            android:layout_weight=".6"
             android:orientation="vertical"
             android:weightSum="1">
 
@@ -150,7 +150,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="@dimen/twenty"
-        android:layout_marginRight="@dimen/thirty_five"
+        android:layout_marginRight="@dimen/twenty"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_phone" />

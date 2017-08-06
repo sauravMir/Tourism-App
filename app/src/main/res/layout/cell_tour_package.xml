@@ -47,7 +47,7 @@
                     android:gravity="left|center"
                     android:text="@string/title"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/fifteen" />
+                    android:textSize="@dimen/twelve" />
 
                 <TextView
                     android:id="@+id/tvDuration"
@@ -58,7 +58,7 @@
                     android:gravity="left|center"
                     android:text="@string/duration"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/fifteen" />
+                    android:textSize="@dimen/twelve" />
 
                 <TextView
                     android:id="@+id/tvDetail"
@@ -69,7 +69,7 @@
                     android:gravity="left|center"
                     android:text="@string/detail"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/fifteen" />
+                    android:textSize="@dimen/twelve" />
 
 
             </LinearLayout>

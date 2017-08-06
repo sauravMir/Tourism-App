@@ -84,8 +84,6 @@ public class MainActivity extends BaseActivity {
 //        Countries countries = (Countries) listAdapter.getChild(0, 0);
 
 
-
-
     }
 
     View previousSelectedItem;
@@ -346,7 +344,7 @@ public class MainActivity extends BaseActivity {
 
 
     private void showProgress() {
-        if (progressDialog != null){
+        if (progressDialog != null) {
             progressDialog.setMessage("please wait...");
             progressDialog.setCancelable(false);
             progressDialog.show();
@@ -356,8 +354,8 @@ public class MainActivity extends BaseActivity {
 
     private void hideProgress() {
 
-            if (progressDialog.isShowing()) {
-                progressDialog.hide();
-            }
+        if (progressDialog.isShowing()) {
+            progressDialog.hide();
+        }
     }
 }

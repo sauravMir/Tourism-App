@@ -6,10 +6,9 @@
         android:color="@color/white" />
 
     <corners
-
-        android:bottomLeftRadius="2dip"
-        android:bottomRightRadius="2dip"
-        android:topLeftRadius="2dip"
-        android:topRightRadius="2dip" />
+        android:bottomLeftRadius="1dip"
+        android:bottomRightRadius="1dip"
+        android:topLeftRadius="1dip"
+        android:topRightRadius="1dip" />
 
 </shape>

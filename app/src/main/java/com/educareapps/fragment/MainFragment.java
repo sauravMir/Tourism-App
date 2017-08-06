@@ -12,14 +12,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
 import com.educareapps.adapter.AdapterTourPackage;
 import com.educareapps.model.TourismPlaceModel;
-import com.educareapps.parser.ParserMode;
 import com.educareapps.parser.TourismPlaceJson;
 import com.educareapps.tourism.CountryCategory;
 import com.educareapps.tourism.MainActivity;
@@ -42,6 +39,7 @@ public class MainFragment extends Fragment {
     ArrayList<TourismPlaceModel> tripArrTemp;
     ArrayList<CountryCategory> rdCategoryLst;
     ProgressDialog progressDialog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, null);
@@ -49,7 +47,7 @@ public class MainFragment extends Fragment {
 
 
         gvCommon = (GridView) v.findViewById(R.id.gvCommon);
-        rdCategoryLst=new ArrayList<>();
+        rdCategoryLst = new ArrayList<>();
 
 
         progressDialog = new ProgressDialog(activity);
@@ -59,10 +57,10 @@ public class MainFragment extends Fragment {
     }
 
     public void loadCountryWiseTrip(String countryId) {
-           // Make Request
+        // Make Request
         //http://192.52.243.6/TourismApp/Packages/getPackageByID?id=1
         showProgress();
-        makeRequest(RootUrl.RootUrl+"getPackageByID?id="+countryId);
+        makeRequest(RootUrl.RootUrl + "getPackageByID?id=" + countryId);
 
 
     }
@@ -93,21 +91,21 @@ public class MainFragment extends Fragment {
     private void parserJson(JSONArray response) {
         TourismPlaceJson parserMode = new TourismPlaceJson(activity, response);
         parserMode.parser();
-        tripArrTemp=new ArrayList<>();
-        tripArrTemp=parserMode.tourismArr;
-        if(tripArrTemp.size()>0)
+        tripArrTemp = new ArrayList<>();
+        tripArrTemp = parserMode.tourismArr;
+        if (tripArrTemp.size() > 0)
             loadData(tripArrTemp);
 
     }
 
     public void setCategoryLst(ArrayList<CountryCategory> rdCategoryLst) {
-           // Make Request
-        this.rdCategoryLst=rdCategoryLst;
+        // Make Request
+        this.rdCategoryLst = rdCategoryLst;
 
 
     }
 
-    public  void loadData(final ArrayList<TourismPlaceModel> tripArr) {
+    public void loadData(final ArrayList<TourismPlaceModel> tripArr) {
         if (tripArr != null) ;
         adapterTourPackage = new AdapterTourPackage(activity, tripArr);
         gvCommon.setAdapter(adapterTourPackage);
@@ -129,8 +127,9 @@ public class MainFragment extends Fragment {
             }
         });
     }
+
     private void showProgress() {
-        if (progressDialog != null){
+        if (progressDialog != null) {
             progressDialog.setMessage("please wait...");
             progressDialog.setCancelable(false);
             progressDialog.show();
