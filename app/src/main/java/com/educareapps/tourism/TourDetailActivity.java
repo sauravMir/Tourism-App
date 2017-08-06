@@ -36,6 +36,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
     SliderLayout mDemoSlider;
     StaticInstance staticInstance;
     TourismPlaceModel tourismPlaceModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +52,9 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         tvDetailExplain = (TextView) findViewById(R.id.tvDetailExplain);
         rtBarDetail = (RatingBar) findViewById(R.id.rtBarDetail);
 
-        staticInstance=StaticInstance.getInstance();
-        tourismPlaceModel=staticInstance.getTourismPlaceModel();
-        
+        staticInstance = StaticInstance.getInstance();
+        tourismPlaceModel = staticInstance.getTourismPlaceModel();
+
         HashMap<String, String> url_maps = new HashMap<String, String>();
         url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
         url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
@@ -161,7 +162,6 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
     }
 
 
-
     private void sendMail() {
         Intent myIntent = new Intent(Intent.ACTION_SEND);
         PackageManager pm = getPackageManager();
@@ -182,8 +182,6 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         startActivity(myIntent);
 
     }
-
-
 
 
     // Full Screen display
@@ -230,10 +228,6 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         fullScreencall();
         UiChangeListener();
     }
-
-
-
-
 
 
 }
