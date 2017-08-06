@@ -101,7 +101,10 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(this);
 
-
+           //add your extra information
+            textSliderView.bundle(new Bundle());
+            textSliderView.getBundle()
+                    .putString("extra", "");
 
             mDemoSlider.addSlider(textSliderView);
 
@@ -134,7 +137,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-        Toast.makeText(this, slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -181,6 +184,9 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         startActivity(myIntent);
 
     }
+
+
+
 
     // Full Screen display
     public void fullScreencall() {
