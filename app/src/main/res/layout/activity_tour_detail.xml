@@ -39,6 +39,15 @@
             android:orientation="vertical"
             android:weightSum="1.2">
 
+            <RatingBar
+                android:id="@+id/rtBarDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:rating="2.0"
+                android:stepSize="0.5" />
+
             <TextView
                 android:id="@+id/tvDetailTitle"
                 android:layout_width="match_parent"
@@ -49,14 +58,6 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/fifteen" />
 
-            <RatingBar
-                android:id="@+id/rtBarDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:numStars="5"
-                android:rating="2.0"
-                android:stepSize="0.5" />
 
             <TextView
                 android:id="@+id/tvDetailDuration"
@@ -102,7 +103,8 @@
         android:layout_marginBottom="@dimen/twenty"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_phone" />
+        android:src="@drawable/ic_phone"
+        android:visibility="invisible" />
 
     <ImageButton
         android:id="@+id/ibtnMail"
@@ -114,7 +116,8 @@
         android:layout_marginRight="@dimen/fifty"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_mail" />
+        android:src="@drawable/ic_mail"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

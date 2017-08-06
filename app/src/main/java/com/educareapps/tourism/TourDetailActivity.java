@@ -151,6 +151,8 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         super.onStop();
     }
 
+
+
     private void sendMail() {
         Intent myIntent = new Intent(Intent.ACTION_SEND);
         PackageManager pm = getPackageManager();
