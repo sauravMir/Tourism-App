@@ -9,9 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.educareapps.model.TourismPlaceModel;
-import com.educareapps.mylibrary.ImageProcessing;
 import com.educareapps.tourism.R;
-import com.educareapps.tourism.Tour;
 
 import java.util.ArrayList;
 
@@ -23,7 +21,6 @@ import java.util.ArrayList;
 public class AdapterTourPackage extends BaseAdapter {
 
     Context context;
-    ImageProcessing imageProcessing;
 
     ArrayList<TourismPlaceModel> tripArr;
     LayoutInflater inflater;
@@ -31,7 +28,6 @@ public class AdapterTourPackage extends BaseAdapter {
     public AdapterTourPackage(Context context,     ArrayList<TourismPlaceModel> tripArr ){
         this.context = context;
         this.tripArr=tripArr;
-        imageProcessing = new ImageProcessing(context);
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 

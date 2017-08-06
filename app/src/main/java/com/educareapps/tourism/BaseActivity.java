@@ -1,4 +1,4 @@
-package com.educareapps.mylibrary;
+package com.educareapps.tourism;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,10 +19,10 @@ public class BaseActivity extends ActionBarActivity {
         //UiChangeListener();
 
         //Custom Error log handeled by Mail
-        if (!ApplicationMode.devMode) {
+       /* if (!ApplicationMode.devMode) {
             Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
         }
-
+*/
 
 
     }

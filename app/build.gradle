@@ -21,8 +21,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':mylibrary')
-
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     compile 'com.squareup.picasso:picasso:2.3.2'
@@ -30,4 +28,5 @@ dependencies {
     compile 'com.daimajia.slider:library:1.1.5@aar'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 }

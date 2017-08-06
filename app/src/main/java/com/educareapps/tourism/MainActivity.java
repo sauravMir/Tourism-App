@@ -26,8 +26,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.educareapps.adapter.CountriesAdapter;
 import com.educareapps.fragment.MainFragment;
-import com.educareapps.mylibrary.BaseActivity;
-import com.educareapps.mylibrary.MarshMallowPermission;
 import com.educareapps.parser.ParserMode;
 import com.educareapps.utilities.RootUrl;
 
@@ -52,7 +50,6 @@ public class MainActivity extends BaseActivity {
     private static final int RECORDER_SAMPLERATE = 8000;
     private static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
     private static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
-    MarshMallowPermission marshMallowPermission;
     ProgressDialog progressDialog;
     //Tourism
     MainFragment mainFragment;
@@ -75,13 +72,13 @@ public class MainActivity extends BaseActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
 
-        marshMallowPermission = new MarshMallowPermission(activity);
+     /*   marshMallowPermission = new MarshMallowPermission(activity);
 
         if (!marshMallowPermission.checkPermissionForExternalStorage() || !marshMallowPermission.checkPermissionForRecord() || !marshMallowPermission.checkPermissionForCamera()) {
             marshMallowPermission.requestPermissionForExternalStorage();
             marshMallowPermission.requestPermissionForRecord();
             marshMallowPermission.requestPermissionForCamera();
-        }
+        }*/
         int bufferSize = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
         System.out.println("BUFFER SIZE VALUE IS " + bufferSize);
 //        Countries countries = (Countries) listAdapter.getChild(0, 0);

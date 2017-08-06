@@ -1,4 +1,4 @@
-package com.educareapps.mylibrary;
+package com.educareapps.utilities;
 
 /**
  * Created by ibrar on 8/11/2016.
