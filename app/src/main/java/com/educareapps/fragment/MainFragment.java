@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,9 +41,9 @@ public class MainFragment extends Fragment {
     ArrayList<TourismPlaceModel> tripArrTemp;
     ArrayList<CountryCategory> rdCategoryLst;
     ProgressDialog progressDialog;
-
+    SwipeRefreshLayout swipeLayout;
     StaticInstance staticInstance;
-
+String countryId;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, null);
@@ -54,12 +55,26 @@ public class MainFragment extends Fragment {
 
         staticInstance = StaticInstance.getInstance();
         progressDialog = new ProgressDialog(activity);
-        loadCountryWiseTrip("");
+//        loadCountryWiseTrip("");
+        swipeLayout = (SwipeRefreshLayout)v.findViewById(R.id.swipe_container);
 
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+                //my update process
+                loadCountryWiseTrip(countryId);
+            }
+        });
+        swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
         return v;
     }
 
     public void loadCountryWiseTrip(String countryId) {
+        this.countryId=countryId;
         // Make Request
         //http://192.52.243.6/TourismApp/Packages/getPackageByID?id=1
         showProgress();
@@ -109,6 +124,8 @@ public class MainFragment extends Fragment {
     }
 
     public void loadData(final ArrayList<TourismPlaceModel> tripArr) {
+//        swipeLayout.removeAllViews();
+        swipeLayout.setRefreshing(false);
         if (tripArr != null) ;
         adapterTourPackage = new AdapterTourPackage(activity, tripArr);
         gvCommon.setAdapter(adapterTourPackage);
