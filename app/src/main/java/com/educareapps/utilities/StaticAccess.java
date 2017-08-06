@@ -1,4 +1,6 @@
-package com.educareapps.tourism;
+package com.educareapps.utilities;
+
+import com.educareapps.tourism.R;
 
 /**
  * Created by RAFI on 4/19/2017.

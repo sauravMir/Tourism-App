@@ -1,4 +1,4 @@
-package com.educareapps.tourism;
+package com.educareapps.utilities;
 
 /**
  * Created by RK-REAZ on 8/6/2017.

@@ -1,4 +1,4 @@
-package com.educareapps.tourism;
+package com.educareapps.utilities;
 
 import android.app.Application;
 import android.text.TextUtils;
@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.educareapps.tourism.R;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 

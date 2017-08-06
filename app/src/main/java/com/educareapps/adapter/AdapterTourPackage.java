@@ -1,4 +1,4 @@
-package com.educareapps.tourism;
+package com.educareapps.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.educareapps.mylibrary.ImageProcessing;
+import com.educareapps.tourism.R;
+import com.educareapps.tourism.Tour;
 
 import java.util.ArrayList;
 

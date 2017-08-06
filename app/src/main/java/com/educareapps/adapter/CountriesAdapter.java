@@ -1,4 +1,4 @@
-package com.educareapps.tourism;
+package com.educareapps.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
+import com.educareapps.tourism.Countries;
+import com.educareapps.tourism.CountryCategory;
+import com.educareapps.tourism.R;
 
 import java.util.ArrayList;
 
