@@ -224,11 +224,16 @@ public class MainActivity extends BaseActivity {
         //add to the counter
         listSize++;*/
 
+
         //create a new child and add that to the group
-        Countries aRadio = new Countries();
-        aRadio.setLink(link);
-        aRadio.setName(title);
-        productList.add(aRadio);
+        if (!isCountry(productList, title)) {
+            Countries aRadio = new Countries();
+            aRadio.setLink(link);
+            aRadio.setName(title);
+            productList.add(aRadio);
+        }
+
+
         headerInfo.setRadioStationList(productList);
 
         //find the group position inside the list
@@ -357,5 +362,20 @@ public class MainActivity extends BaseActivity {
         if (progressDialog.isShowing()) {
             progressDialog.hide();
         }
+
+    }
+
+    public boolean isCountry(ArrayList<Countries> productList, String name) {
+        boolean isCountry = false;
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getName().equals(name)) {
+                isCountry = true;
+                break;
+            } else {
+                isCountry = false;
+            }
+        }
+        return isCountry;
+
     }
 }

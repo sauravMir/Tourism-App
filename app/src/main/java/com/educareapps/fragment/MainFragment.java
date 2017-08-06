@@ -25,6 +25,7 @@ import com.educareapps.tourism.Tour;
 import com.educareapps.tourism.TourDetailActivity;
 import com.educareapps.utilities.AppController;
 import com.educareapps.utilities.RootUrl;
+import com.educareapps.utilities.StaticInstance;
 
 import org.json.JSONArray;
 
@@ -40,6 +41,8 @@ public class MainFragment extends Fragment {
     ArrayList<CountryCategory> rdCategoryLst;
     ProgressDialog progressDialog;
 
+    StaticInstance staticInstance;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, null);
@@ -49,7 +52,7 @@ public class MainFragment extends Fragment {
         gvCommon = (GridView) v.findViewById(R.id.gvCommon);
         rdCategoryLst = new ArrayList<>();
 
-
+        staticInstance = StaticInstance.getInstance();
         progressDialog = new ProgressDialog(activity);
         loadCountryWiseTrip("");
 
@@ -112,12 +115,15 @@ public class MainFragment extends Fragment {
         gvCommon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+                staticInstance.clearAll();
+                staticInstance.setTourismPlaceModel(tripArr.get(position));
                 Intent intent = new Intent(activity, TourDetailActivity.class);
 
                 /*String tourTitle = tripArr.get(position).getTitle();
                 String duration = tripArr.get(position).getDuration();
                 String detail = tripArr.get(position).getDetail();
-
                 intent.putExtra("tourTitle", tourTitle);
                 intent.putExtra("duration", duration);
                 intent.putExtra("detail", detail);*/
