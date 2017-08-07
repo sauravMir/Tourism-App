@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
@@ -53,18 +52,13 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         rtBarDetail = (RatingBar) findViewById(R.id.rtBarDetail);
 
 
-        staticInstance=StaticInstance.getInstance();
-        tourismPlaceModel=staticInstance.getTourismPlaceModel();
-
-
-       /* tourTitle = tourismPlaceModel.getPackageName();
-        duration =tourismPlaceModel.getPricePerPerson() ;
-        detail = tourismPlaceModel.getCountry();*/
+        staticInstance = StaticInstance.getInstance();
+        tourismPlaceModel = staticInstance.getTourismPlaceModel();
 
 
         tvDetailTitle.setText(tourismPlaceModel.getPackageName());
         tvDetailCountry.setText(tourismPlaceModel.getCountry());
-        tvDetailDuration.setText("PPP: "+tourismPlaceModel.getPricePerPerson()+" BDT");
+        tvDetailDuration.setText("PPP: " + tourismPlaceModel.getPricePerPerson() + " BDT");
         tvDetailExplain.setText(tourismPlaceModel.getDescriptions());
 
 
@@ -97,8 +91,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         });
 
 
-
-        for(int i=0;i<tourismPlaceModel.getImageArr().size();i++){
+        for (int i = 0; i < tourismPlaceModel.getImageArr().size(); i++) {
 
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
@@ -108,7 +101,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(this);
 
-           //add your extra information
+            //add your extra information
             textSliderView.bundle(new Bundle());
             textSliderView.getBundle()
                     .putString("extra", "");
@@ -124,17 +117,17 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         mDemoSlider.setDuration(4000);
         mDemoSlider.addOnPageChangeListener(this);
 
-        if(tourismPlaceModel.getDescriptions().contains("3")){
+        if (tourismPlaceModel.getDescriptions().contains("3")) {
             rtBarDetail.setRating(3);
-        }else  if(tourismPlaceModel.getDescriptions().contains("2")){
+        } else if (tourismPlaceModel.getDescriptions().contains("2")) {
             rtBarDetail.setRating(2);
-        }else  if(tourismPlaceModel.getDescriptions().contains("1")){
+        } else if (tourismPlaceModel.getDescriptions().contains("1")) {
             rtBarDetail.setRating(1);
-        }else  if(tourismPlaceModel.getDescriptions().contains("4")){
+        } else if (tourismPlaceModel.getDescriptions().contains("4")) {
             rtBarDetail.setRating(4);
-        }else  if(tourismPlaceModel.getDescriptions().contains("5")){
+        } else if (tourismPlaceModel.getDescriptions().contains("5")) {
             rtBarDetail.setRating(5);
-        }else{
+        } else {
             rtBarDetail.setRating(3);
         }
 

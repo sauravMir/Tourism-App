@@ -28,7 +28,9 @@ import com.android.volley.toolbox.Volley;
 import com.educareapps.adapter.CountriesAdapter;
 import com.educareapps.fragment.MainFragment;
 import com.educareapps.parser.ParserMode;
+import com.educareapps.utilities.InternetAvailabilityCheck;
 import com.educareapps.utilities.RootUrl;
+import com.educareapps.utilities.StaticAccess;
 
 import org.json.JSONArray;
 
@@ -73,13 +75,7 @@ public class MainActivity extends BaseActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
 
-     /*   marshMallowPermission = new MarshMallowPermission(activity);
-
-        if (!marshMallowPermission.checkPermissionForExternalStorage() || !marshMallowPermission.checkPermissionForRecord() || !marshMallowPermission.checkPermissionForCamera()) {
-            marshMallowPermission.requestPermissionForExternalStorage();
-            marshMallowPermission.requestPermissionForRecord();
-            marshMallowPermission.requestPermissionForCamera();
-        }*/
+     
         int bufferSize = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
         System.out.println("BUFFER SIZE VALUE IS " + bufferSize);
 //        Countries countries = (Countries) listAdapter.getChild(0, 0);
@@ -91,13 +87,15 @@ public class MainActivity extends BaseActivity {
 
 
     private void addDrawerItems() {
-        //get reference of the ExpandableListView
-        simpleExpandableListView = (ExpandableListView) findViewById(R.id.simpleExpandableListView);
-//        http://192.52.243.6/TourismApp/Packages/getCountryList/
-        showProgress();
-        makeRequest(RootUrl.RootUrl + "getCountryList");
-
-
+        if(InternetAvailabilityCheck.getConnectivityStatus(activity) != StaticAccess.TYPE_NOT_CONNECTED){
+            //get reference of the ExpandableListView
+            simpleExpandableListView = (ExpandableListView) findViewById(R.id.simpleExpandableListView);
+            showProgress();
+            makeRequest(RootUrl.RootUrl + "getCountryList");
+        }
+        else {
+            Toast.makeText(activity, "Net connect first", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

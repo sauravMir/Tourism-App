@@ -133,18 +133,9 @@ String countryId;
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
                 staticInstance.clearAll();
                 staticInstance.setTourismPlaceModel(tripArr.get(position));
                 Intent intent = new Intent(activity, TourDetailActivity.class);
-
-                /*String tourTitle = tripArr.get(position).getTitle();
-                String duration = tripArr.get(position).getDuration();
-                String detail = tripArr.get(position).getDetail();
-                intent.putExtra("tourTitle", tourTitle);
-                intent.putExtra("duration", duration);
-                intent.putExtra("detail", detail);*/
-
                 startActivity(intent);
                 getActivity().finish();
             }
