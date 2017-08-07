@@ -59,7 +59,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
 
         tvDetailTitle.setText(tourismPlaceModel.getPackageName());
         tvDetailCountry.setText(tourismPlaceModel.getCountry());
-        tvDetailDuration.setText("PPP: " + tourismPlaceModel.getPricePerPerson() + " BDT");
+        tvDetailDuration.setText("Price: " + tourismPlaceModel.getPricePerPerson() + " BDT");
         tvDetailExplain.setText(tourismPlaceModel.getDescriptions());
 
 
