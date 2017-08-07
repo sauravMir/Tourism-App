@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -58,7 +57,6 @@ public class MainActivity extends BaseActivity {
     //Tourism
     MainFragment mainFragment;
     boolean isDrawerOpen = false;
-    LinearLayout llOverlay;
 
 
     @Override
@@ -70,7 +68,6 @@ public class MainActivity extends BaseActivity {
         mActivityTitle = getTitle().toString();
         progressDialog = new ProgressDialog(activity);
         mainFragment = new MainFragment();
-        llOverlay = (LinearLayout) findViewById(R.id.llOverlay);
 
         addDrawerItems();
         setupDrawer();
@@ -90,16 +87,14 @@ public class MainActivity extends BaseActivity {
 
 
     private void addDrawerItems() {
-
         if(InternetAvailabilityCheck.getConnectivityStatus(activity) != StaticAccess.TYPE_NOT_CONNECTED){
             //get reference of the ExpandableListView
             simpleExpandableListView = (ExpandableListView) findViewById(R.id.simpleExpandableListView);
             showProgress();
             makeRequest(RootUrl.RootUrl + "getCountryList");
-            llOverlay.setVisibility(View.INVISIBLE);
         }
         else {
-            llOverlay.setVisibility(View.VISIBLE);
+            Toast.makeText(activity, "Net connect first", Toast.LENGTH_SHORT).show();
         }
     }
 
