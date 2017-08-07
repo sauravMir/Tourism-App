@@ -27,7 +27,10 @@
         <activity
             android:name=".TourDetailActivity"
             android:screenOrientation="sensorPortrait" />
-        <activity android:name=".InfoActivity"></activity>
+        <activity android:name=".InfoActivity"
+            android:theme="@style/MyMaterialTheme">
+
+        </activity>
     </application>
 
 </manifest>
