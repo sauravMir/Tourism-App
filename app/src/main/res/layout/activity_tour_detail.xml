@@ -82,7 +82,6 @@
                     android:clickable="false"
                     android:focusableInTouchMode="false"
                     android:focusable="false"
-
                     android:scaleX="0.5"
                     android:scaleY="0.5"
                     android:stepSize="1.0" />
@@ -100,6 +99,26 @@
                 android:textSize="@dimen/fifteen" />
 
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_weight=".55">
+
+                <TextView
+                    android:id="@+id/tvDetailExplain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center"
+                    android:text="@string/detail"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fifteen" />
+
+            </ScrollView>
+
+
         </LinearLayout>
 
 
@@ -111,7 +130,7 @@
         android:layout_width="@dimen/fifty"
         android:layout_height="@dimen/fifty"
         android:background="@android:color/transparent"
-        android:padding="@dimen/ten"
+        android:padding="@dimen/five"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_back" />
 
@@ -140,23 +159,5 @@
         android:scaleType="fitCenter"
         android:src="@drawable/ic_phone" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/zero"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_weight=".6">
-
-        <TextView
-            android:id="@+id/tvDetailExplain"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="left|center"
-            android:text="@string/detail"
-            android:textColor="@color/black"
-            android:textSize="@dimen/fifteen" />
-
-    </ScrollView>
 
 </RelativeLayout>

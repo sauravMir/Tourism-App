@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -149,10 +150,10 @@ public class MainActivity extends BaseActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        /*if (id == R.id.action_settings) {
-
+        if (id == R.id.action_settings) {
+            Toast.makeText(activity, "Info dialog here", Toast.LENGTH_SHORT).show();
             return true;
-        }*/
+        }
 
         // Activate the navigation drawer toggle
         if (mDrawerToggle.onOptionsItemSelected(item)) {
@@ -178,28 +179,6 @@ public class MainActivity extends BaseActivity {
             simpleExpandableListView.collapseGroup(i);
         }
     }
-
-    //load some initial data into out list
-/*    private void loadData() {
-
-        addRadioStation(getString(R.string.international_radio), "Bangladesh", "");
-        addRadioStation(getString(R.string.international_radio), "India", "");
-        addRadioStation(getString(R.string.international_radio), "Pakistan", "");
-        addRadioStation(getString(R.string.international_radio), "USA", "");
-
-
-        addRadioStation(getString(R.string.international_radio), "UK", "");
-        addRadioStation(getString(R.string.international_radio), "Spain", "");
-        addRadioStation(getString(R.string.international_radio), "Japan", "");
-        addRadioStation(getString(R.string.international_radio), "Malayshia", "");
-
-        addRadioStation(getString(R.string.international_radio), "Egypt", "");
-        addRadioStation(getString(R.string.international_radio), "Indoneshia", "");
-        addRadioStation(getString(R.string.international_radio), "Arab", "");
-        addRadioStation(getString(R.string.international_radio), "Singapur", "");
-
-
-    }*/
 
 
     //here we maintain our products in various departments
