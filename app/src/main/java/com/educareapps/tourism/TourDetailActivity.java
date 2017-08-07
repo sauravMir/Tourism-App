@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
@@ -133,7 +134,13 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
 
         rtBarDetail.setNumStars(5);
         rtBarDetail.setClickable(false);
+        rtBarDetail.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
 
+        rtBarDetail.setFocusable(false);
        /* rtBarDetail.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
