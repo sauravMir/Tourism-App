@@ -43,7 +43,8 @@ public class MainFragment extends Fragment {
     ProgressDialog progressDialog;
     SwipeRefreshLayout swipeLayout;
     StaticInstance staticInstance;
-String countryId;
+    String countryId;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, null);
@@ -56,7 +57,7 @@ String countryId;
         staticInstance = StaticInstance.getInstance();
         progressDialog = new ProgressDialog(activity);
 //        loadCountryWiseTrip("");
-        swipeLayout = (SwipeRefreshLayout)v.findViewById(R.id.swipe_container);
+        swipeLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipe_container);
 
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
@@ -66,15 +67,23 @@ String countryId;
                 loadCountryWiseTrip(countryId);
             }
         });
-        swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
+
+        /*swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
+                android.R.color.holo_red_light);*/
+
+        swipeLayout.setColorSchemeColors(
+                getResources().getColor(R.color.blueLight),
+                getResources().getColor(R.color.greenLight),
+                getResources().getColor(R.color.orangeLight),
+                getResources().getColor(R.color.redLight));
+
         return v;
     }
 
     public void loadCountryWiseTrip(String countryId) {
-        this.countryId=countryId;
+        this.countryId = countryId;
         // Make Request
         //http://192.52.243.6/TourismApp/Packages/getPackageByID?id=1
         showProgress();

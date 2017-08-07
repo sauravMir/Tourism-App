@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.media.AudioFormat;
@@ -19,7 +20,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -153,7 +153,8 @@ public class MainActivity extends BaseActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Toast.makeText(activity, "Info dialog here", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(activity, "Info dialog here", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(activity, InfoActivity.class));
             return true;
         }
 
