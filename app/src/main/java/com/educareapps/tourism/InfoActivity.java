@@ -1,37 +1,31 @@
 package com.educareapps.tourism;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
-
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public class InfoActivity extends BaseActivity {
     private static final String EXTRA_IMAGE = "com.educareapps.tourism.extraImage";
     private static final String EXTRA_TITLE = "com.educareapps.tourism.extraTitle";
     private CollapsingToolbarLayout collapsingToolbarLayout;
+    Toolbar toolbar;
+    InfoActivity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         ViewCompat.setTransitionName(findViewById(R.id.app_bar_layout), EXTRA_IMAGE);
         supportPostponeEnterTransition();
+        activity = this;
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String itemTitle = getIntent().getStringExtra(EXTRA_TITLE);
@@ -39,24 +33,14 @@ public class InfoActivity extends BaseActivity {
         collapsingToolbarLayout.setTitle(itemTitle);
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
 
-      /*  final ImageView image = (ImageView) findViewById(R.id.image);
-        Picasso.with(this).load(getIntent().getStringExtra(EXTRA_IMAGE)).into(image, new Callback() {
-            @Override public void onSuccess() {
-                Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
-                Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
-                    public void onGenerated(Palette palette) {
-                        applyPalette(palette);
-                    }
-                });
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(activity, MainActivity.class));
+                finish();
             }
-
-            @Override public void onError() {
-
-            }
-        });*/
-
-        /*TextView title = (TextView) findViewById(R.id.title);
-        title.setText(itemTitle);*/
+        });
     }
 
     @Override
@@ -76,6 +60,17 @@ public class InfoActivity extends BaseActivity {
             getWindow().setReturnTransition(transition);
         }
     }
+
+
+
+    /*toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    });
+    */
+
 
   /*  private void applyPalette(Palette palette) {
         int primaryDark = getResources().getColor(R.color.primary_dark);

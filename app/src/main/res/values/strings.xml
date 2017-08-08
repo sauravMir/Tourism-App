@@ -38,7 +38,14 @@
     <string name="calling_numkber">01784010022</string>
     <string name="tel">tel:</string>
     <string name="aa">abcd</string>
-    <string name="info">This is our Tourism app. You will get all info here about tour package</string>
+    <string name="info">
+        Ultimate Tourism is an independent business travel management specialist
+        committed to offering the very highest standards of service and expertise. We offer a level of flexibility
+        that enables us to tailor-make our corporate travel solution to fit each individual customer.
+        So whether your preference is to pick up the phone, send an e-mail or book yourself online,
+        Ultimate Tourism will design and implement a programme that works for you.
+
+    </string>
 
 
 </resources>

@@ -201,10 +201,6 @@ public class MainActivity extends BaseActivity {
 
         //get the children for the group
         ArrayList<Countries> productList = headerInfo.getRadioStationList();
-      /*  //size of the children list
-        int listSize = productList.size();
-        //add to the counter
-        listSize++;*/
 
 
         //create a new child and add that to the group
