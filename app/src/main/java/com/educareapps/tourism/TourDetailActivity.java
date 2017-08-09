@@ -143,12 +143,7 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         });
 
         rtBarDetail.setFocusable(false);
-       /* rtBarDetail.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                Toast.makeText(activity, String.valueOf(ratingBar.getRating()), Toast.LENGTH_SHORT).show();
-            }
-        });*/
+
 
         fullScreencall();
         UiChangeListener();

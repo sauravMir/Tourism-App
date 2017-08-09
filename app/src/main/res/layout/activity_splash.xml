@@ -4,38 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#EA1B21"
     tools:context="com.educareapps.tourism.SplashActivity">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/two_hundred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical"
         android:weightSum="1">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".5"
-            android:background="@color/black"
-            android:gravity="center"
-            android:text="Ultimate"
-            android:textColor="@color/white"
-            android:textSize="@dimen/seventy"
-            android:textStyle="bold" />
 
-
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".5"
-            android:background="@color/white"
-            android:gravity="center"
-            android:text="Tourism"
-            android:textColor="@color/black"
-            android:textSize="@dimen/seventy" />
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo" />
 
 
     </LinearLayout>
