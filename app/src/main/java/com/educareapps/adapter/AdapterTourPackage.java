@@ -72,7 +72,7 @@ public class AdapterTourPackage extends BaseAdapter {
         }
         Picasso.with(context).load(tripArr.get(position).getImageArr().get(0)).into(holder.ivGridItem);
 
-         holder.tvTitle.setText(tripArr.get(position).getHotel());
+         holder.tvTitle.setText(tripArr.get(position).getPackageName());
          holder.tvDuration.setText(tripArr.get(position).getPlace());
          holder.tvDetail.setText("Price: "+tripArr.get(position).getPricePerPerson()+" BDT");
 

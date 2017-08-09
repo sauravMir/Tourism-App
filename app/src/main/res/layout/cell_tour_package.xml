@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:padding="@dimen/five"
+        android:padding="8dp"
         android:orientation="vertical">
 
         <ImageView
