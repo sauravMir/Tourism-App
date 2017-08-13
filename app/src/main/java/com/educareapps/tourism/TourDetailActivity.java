@@ -119,24 +119,11 @@ public class TourDetailActivity extends BaseActivity implements BaseSliderView.O
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
         mDemoSlider.setDuration(4000);
         mDemoSlider.addOnPageChangeListener(this);
-
-        if (tourismPlaceModel.getDescriptions().contains("3 Star")) {
-            rtBarDetail.setRating(3);
-        } else if (tourismPlaceModel.getDescriptions().contains("2 Star")) {
-            rtBarDetail.setRating(2);
-        } else if (tourismPlaceModel.getDescriptions().contains("1 Star")) {
-            rtBarDetail.setRating(1);
-        } else if (tourismPlaceModel.getDescriptions().contains("4 Star")) {
-            rtBarDetail.setRating(4);
-        } else if (tourismPlaceModel.getDescriptions().contains("5 Star")) {
-            rtBarDetail.setRating(5);
-        } else {
-            rtBarDetail.setRating(3);
-        }
-
-        rtBarDetail.setNumStars(5);
-        rtBarDetail.setClickable(false);
-        rtBarDetail.setOnTouchListener(new View.OnTouchListener() {
+        if (tourismPlaceModel.getHotelStar() != null)
+            rtBarDetail.setRating(Integer.valueOf(tourismPlaceModel.getHotelStar()));
+            rtBarDetail.setNumStars(5);
+            rtBarDetail.setClickable(false);
+            rtBarDetail.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
             }
