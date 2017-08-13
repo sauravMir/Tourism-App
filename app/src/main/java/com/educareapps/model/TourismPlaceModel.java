@@ -20,6 +20,16 @@ import java.util.ArrayList;
 public class TourismPlaceModel {
     private String packageId;
     private String country;
+
+    public String getHotelStar() {
+        return hotelStar;
+    }
+
+    public void setHotelStar(String hotelStar) {
+        this.hotelStar = hotelStar;
+    }
+
+    private String hotelStar;
     private String packageName;
     private String hotel;
     private String place;

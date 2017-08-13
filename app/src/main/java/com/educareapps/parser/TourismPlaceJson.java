@@ -27,6 +27,7 @@ public class TourismPlaceJson {
     public static final String TAG_COUNTRY = "country";
     public static final String TAG_PACKAGE_NAME = "package_name";
     public static final String TAG_PACKAGE_HOTEL = "hotel";
+    public static final String TAG_PACKAGE_HOTEL_STAR = "hotel_standard";
     public static final String TAG_PLACE = "place";
     public static final String TAG_PRICE = "price_per_person";
     public static final String TAG_PACKAGE_DESCRIPTION = "descriptions";
@@ -55,6 +56,7 @@ public class TourismPlaceJson {
                     tourismPlaceModel.setPackageName(jresponse.getString(TAG_PACKAGE_NAME));
 
                     tourismPlaceModel.setHotel(jresponse.getString(TAG_PACKAGE_HOTEL));
+                    tourismPlaceModel.setHotelStar(jresponse.getString(TAG_PACKAGE_HOTEL_STAR));
                     tourismPlaceModel.setPlace(jresponse.getString(TAG_PLACE));
                     tourismPlaceModel.setPricePerPerson(jresponse.getString(TAG_PRICE));
                     tourismPlaceModel.setDescriptions(jresponse.getString(TAG_PACKAGE_DESCRIPTION));
