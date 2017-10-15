@@ -60,7 +60,7 @@ public class TourismPlaceJson {
                     tourismPlaceModel.setPlace(jresponse.getString(TAG_PLACE));
                     tourismPlaceModel.setPricePerPerson(jresponse.getString(TAG_PRICE));
                     tourismPlaceModel.setDescriptions(jresponse.getString(TAG_PACKAGE_DESCRIPTION));
-//                    jsonPhotoArray=new JSONArray();
+
                     jsonPhotoArray = jresponse.getJSONArray(TAG_PHOTO_ARRAY);
                     tourismPlaceModel.setDescriptions(jresponse.getString(TAG_PACKAGE_DESCRIPTION));
 
